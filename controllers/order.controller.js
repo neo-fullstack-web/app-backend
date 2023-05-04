@@ -8,7 +8,7 @@ const createOrder = async (req, res) => {
         order.totalPrice = await verifyOrderAndCalculate(req.body.orderProducts);
 
         //TODO: remove
-        order.userId = req.user?._id || '6413b9ebe6388a06e13905d9';
+        order.userId = req.user?._id;
         
         const newOrder = await order.save();
 
@@ -24,7 +24,7 @@ const createOrder = async (req, res) => {
 
 async function getOrders(req, res) {
     try {
-        const orders = await Order.find().populate('orderProducts.product', { name: 1, price: 1 });
+        const orders = await Order.find().populate('orderProducts.product', { name: 1 }).populate('userId', { name: 1, email: 1,  });
         if(!orders) throw new Error('Error al obtener las ordenes');
 
         return res.status(200).send(orders)
