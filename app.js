@@ -8,8 +8,12 @@ const product_routes = require('./routes/product.routes');
 const upload_routes = require('./routes/upload.routes');
 const order_routes = require('./routes/order.routes');
 const view_routes = require('./routes/views.routes');
+
 //Middlewares
 app.set('view engine', 'ejs');
+
+
+
 //Habilito realizar peticiones desde el navegador a mi backend
 app.use(cors())
 //Poder leer el body de una petición cuando es un json

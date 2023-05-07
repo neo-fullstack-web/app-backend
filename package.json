@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js ",
+    "browser-sync": "browser-sync start --proxy localhost:4000 --files public/stylesheets/*.css, views/**/*.ejs --reload-delay 100",
+    "dev": "concurrently \"npm start\" \"npm run watch-sass\" \"npm run browser-sync\""
   },
   "author": "RC",
   "license": "ISC",
@@ -22,6 +24,10 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.29.1",
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
+    "node-sass": "^8.0.0",
     "nodemon": "^2.0.20"
   }
 }
